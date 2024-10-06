@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
+// #include "features/"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 
@@ -57,6 +58,7 @@ const key_override_t *key_overrides[] = {
   // Layer-Tap keys
   &KO_BSPC_DELETE,
   &KO_SPACE_ESC,
+  NULL
 };
 
 enum custom_keycodes {
@@ -65,49 +67,49 @@ enum custom_keycodes {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [BASE] = LAYOUT_voyager(
-    KC_ESC,       &KO_ONE,            &KO_TWO,            &KO_THREE,          &KO_FOUR,           &KO_FIVE,                                       &KO_SIX,        &KO_SEVEN,          &KO_EIGHT,           &KO_NINE,           &KO_ZERO,             KC_ESC,           
-    &KO_HASH,     KC_B,               KC_Y,               KC_O,               KC_U,               &KO_APOS,                                       &KO_QUOTE,      KC_L,               KC_D,                KC_W,               KC_V,                 KC_Q,
-    &KO_AT,       MT(MOD_LCTL, KC_C), MT(MOD_LALT, KC_I), MT(MOD_LSFT, KC_E), MT(MOD_LGUI, KC_A), &KO_COMMA,                                      &KO_DOT,        MT(MOD_RGUI, KC_H), MT(MOD_RSFT, KC_T),  MT(MOD_LALT, KC_S), MT(MOD_RCTL, KC_N),   KC_Z, 
-    &KO_BKSL,     KC_G,               KC_X,               KC_J,               KC_K,               KC_MINUS,                                       &KO_QMARK,      KC_R,               KC_M,                KC_F,               KC_P,                 KC_NO, 
-                                                                              &KO_SPACE_ESC,      LT(MOUSE, KC_TAB),                              LT(5,KC_ENTER), &KO_BSPC_DELETE
+  [0] = LAYOUT_voyager(
+    KC_ESC,      KC_1,               KC_2,               KC_3,               KC_4,                   KC_5,                                          KC_6,              KC_7,               KC_8,                KC_9,               KC_0,                 KC_ESC,           
+    KC_HASH,     KC_B,               KC_Y,               KC_O,               KC_U,                   KC_QUOTE,                                       KC_DQUO,      KC_L,               KC_D,                KC_W,               KC_V,                 KC_Q,
+    KC_AT,       MT(MOD_LCTL, KC_C), MT(MOD_LALT, KC_I), MT(MOD_LSFT, KC_E), MT(MOD_LGUI, KC_A), KC_COMMA,                                   KC_DOT,        MT(MOD_RGUI, KC_H), MT(MOD_RSFT, KC_T),  MT(MOD_LALT, KC_S), MT(MOD_RCTL, KC_N),   KC_Z, 
+    KC_SLSH,     KC_G,               KC_X,               KC_J,               KC_K,               KC_MINUS,                                       KC_QUES,      KC_R,               KC_M,                KC_F,               KC_P,                 KC_NO, 
+                                                                              LT(ARROWS, KC_SPACE),      LT(MOUSE, KC_TAB),                              LT(5,KC_ENTER), LT(NUM, KC_BSPC)
   ),
-  [ARROWS] = LAYOUT_voyager(
+  [1] = LAYOUT_voyager(
     KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          KC_NO,          KC_DELETE,          KC_NO,               KC_NO,              KC_NO,                KC_NO, 
     KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          KC_NO,          KC_NO,              KC_NO,               KC_NO,              KC_NO,                KC_NO,          
     KC_NO,        KC_LEFT_CTRL,       KC_LEFT_ALT,        KC_LEFT_SHIFT,      KC_LEFT_GUI,        KC_NO,                                          KC_NO,          KC_LEFT,            KC_DOWN,             KC_UP,              KC_RIGHT,             KC_NO,  
     KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          KC_ESC,         KC_HOME,            KC_PGDN,             KC_PAGE_UP,         KC_END,               KC_NO,          
                                                                               KC_NO,              KC_NO,                                          KC_ENTER,       KC_BSPC
   ),
-  [MOUSE] = LAYOUT_voyager(
+  [2] = LAYOUT_voyager(
     KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          KC_NO,          KC_NO,              KC_NO,               KC_NO,              KC_NO,                KC_NO, 
     KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          LCTL(KC_Y),     LCTL(KC_V),         LCTL(KC_C),          LCTL(KC_X),         LCTL(KC_Z),           KC_NO,          
     KC_NO,        KC_LEFT_CTRL,       KC_LEFT_ALT,        KC_LEFT_SHIFT,      KC_LEFT_GUI,        KC_NO,                                          LCTL(KC_F),     KC_MS_LEFT,         KC_MS_DOWN,          KC_MS_UP,           KC_MS_RIGHT,          KC_NO,          
     KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          KC_NO,          KC_MS_WH_LEFT,      KC_MS_WH_DOWN,       KC_MS_WH_UP,        KC_MS_WH_RIGHT,       KC_NO,          
                                                                               KC_NO,              KC_NO,                                          KC_MS_BTN2,     KC_MS_BTN1
   ),
-  [MEDIA] = LAYOUT_voyager(
+  [3] = LAYOUT_voyager(
     KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          KC_NO,          KC_NO,               KC_NO,              KC_NO,               KC_NO,               KC_NO, 
     KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          RGB_SAD,        RGB_HUD,             RGB_VAD,            RGB_VAI,             RGB_HUI,             RGB_SAI,        
     KC_NO,        KC_LEFT_CTRL,       KC_LEFT_ALT,        KC_LEFT_SHIFT,      KC_LEFT_GUI,        KC_NO,                                          RGB_SLD,        KC_MEDIA_PREV_TRACK, KC_AUDIO_VOL_DOWN,  KC_AUDIO_VOL_UP,     KC_MEDIA_NEXT_TRACK, RGB_TOG,        
     KC_NO,        KC_NO,              KC_RIGHT_ALT,       KC_NO,              KC_CAPS,            KC_NO,                                          KC_NO,          KC_NO,               KC_BRIGHTNESS_DOWN, KC_BRIGHTNESS_UP,    KC_NO,               KC_NO,          
                                                                               KC_NO,              KC_NO,                                          KC_MEDIA_STOP,  KC_MEDIA_PLAY_PAUSE
   ),
-  [NUM] = LAYOUT_voyager(
+  [4] = LAYOUT_voyager(
     KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_ESCAPE,          KC_NO,                                          KC_NO,          KC_NO,               KC_NO,               KC_NO,              KC_NO,               KC_NO, 
     KC_DLR,       KC_1,               KC_2,               KC_3,               KC_4,               KC_5,                                           KC_6,           KC_7,                KC_8,                KC_9,               KC_0,                KC_RBRC,        
     KC_GRAVE,     KC_LCBR,            KC_RCBR,            KC_LPRN,            KC_RPRN,            KC_SCLN,                                        KC_COLN,        KC_RIGHT_GUI,        KC_RIGHT_SHIFT,      KC_LEFT_ALT,        KC_RIGHT_CTRL,       KC_NO,          
     KC_BSLS,      KC_LBRC,            KC_RBRC,            KC_LABK,            KC_RABK,            KC_UNDS,                                        KC_EXLM,        KC_CAPS,             KC_NO,               KC_RIGHT_ALT,       KC_NO,               KC_NO,          
                                                                               KC_SPACE,           KC_TAB,                                         KC_NO,          KC_NO
   ),
-  [SYMBOL] = LAYOUT_voyager(
+  [5] = LAYOUT_voyager(
     KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_ESCAPE,          KC_NO,                                          KC_NO,          KC_NO,               KC_NO,               KC_NO,              KC_NO,                KC_NO, 
     KC_DLR,       KC_PIPE,            KC_EQUAL,           KC_TILD,            KC_PLUS,            KC_LABK,                                        KC_RABK,        KC_CIRC,             KC_AMPR,             KC_PERC,            KC_ASTR,              KC_RBRC,        
     KC_GRAVE,     KC_LPRN,            KC_RPRN,            KC_LCBR,            KC_RCBR,            KC_SCLN,                                        KC_COLN,        KC_RIGHT_GUI,        KC_RIGHT_SHIFT,      KC_LEFT_ALT,        KC_RIGHT_CTRL,        KC_NO,          
     KC_BSLS,      KC_LBRC,            KC_RBRC,            KC_LABK,            KC_RABK,            KC_UNDS,                                        KC_EXLM,        KC_CAPS,             KC_NO,               KC_RIGHT_ALT,       KC_NO,                KC_NO,          
                                                                               KC_SPACE,           KC_TAB,                                         KC_NO,          KC_NO
   ),
-  [FUNCTION] = LAYOUT_voyager(
+  [6] = LAYOUT_voyager(
     KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_APPLICATION,     KC_NO,                                          KC_NO,          KC_NO,               KC_NO,               KC_NO,              KC_NO,                KC_NO, 
     KC_NO,        KC_F1,              KC_F2,              KC_F3,              KC_F4,              KC_F5,                                          KC_F6,          KC_F7,               KC_F8,               KC_F9,              KC_F10,               KC_NO,          
     KC_NO,        KC_LEFT_CTRL,       KC_LEFT_ALT,        KC_LEFT_SHIFT,      KC_LEFT_GUI,        KC_NO,                                          KC_NO,          KC_RIGHT_GUI,        KC_RIGHT_SHIFT,      KC_LEFT_ALT,        KC_RIGHT_CTRL,        KC_NO,          
