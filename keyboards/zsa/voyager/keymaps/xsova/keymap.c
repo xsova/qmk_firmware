@@ -13,16 +13,26 @@
 #define FUNCTION 6
 
 // Engram shift + key remaps
-const key_override_t KO_ONE         = ko_make_basic(MOD_MASK_SHIFT, KC_1, KC_PIPE);
-const key_override_t KO_TWO         = ko_make_basic(MOD_MASK_SHIFT, KC_2, KC_EQUAL);
-const key_override_t KO_THREE       = ko_make_basic(MOD_MASK_SHIFT, KC_3, KC_TILD);
-const key_override_t KO_FOUR        = ko_make_basic(MOD_MASK_SHIFT, KC_4, KC_PLUS);
-const key_override_t KO_FIVE        = ko_make_basic(MOD_MASK_SHIFT, KC_5, KC_LABK);
-const key_override_t KO_SIX         = ko_make_basic(MOD_MASK_SHIFT, KC_6, KC_RABK);
-const key_override_t KO_SEVEN       = ko_make_basic(MOD_MASK_SHIFT, KC_7, KC_CIRC);
-const key_override_t KO_EIGHT       = ko_make_basic(MOD_MASK_SHIFT, KC_8, KC_AMPR);
-const key_override_t KO_NINE        = ko_make_basic(MOD_MASK_SHIFT, KC_9, KC_PERC);
-const key_override_t KO_ZERO        = ko_make_basic(MOD_MASK_SHIFT, KC_0, KC_ASTR);
+// const key_override_t KO_ONE         = ko_make_basic(MOD_MASK_SHIFT, KC_1, KC_PIPE);
+// const key_override_t KO_TWO         = ko_make_basic(MOD_MASK_SHIFT, KC_2, KC_EQUAL);
+// const key_override_t KO_THREE       = ko_make_basic(MOD_MASK_SHIFT, KC_3, KC_TILD);
+// const key_override_t KO_FOUR        = ko_make_basic(MOD_MASK_SHIFT, KC_4, KC_PLUS);
+// const key_override_t KO_FIVE        = ko_make_basic(MOD_MASK_SHIFT, KC_5, KC_LABK);
+// const key_override_t KO_SIX         = ko_make_basic(MOD_MASK_SHIFT, KC_6, KC_RABK);
+// const key_override_t KO_SEVEN       = ko_make_basic(MOD_MASK_SHIFT, KC_7, KC_CIRC);
+// const key_override_t KO_EIGHT       = ko_make_basic(MOD_MASK_SHIFT, KC_8, KC_AMPR);
+// const key_override_t KO_NINE        = ko_make_basic(MOD_MASK_SHIFT, KC_9, KC_PERC);
+// const key_override_t KO_ZERO        = ko_make_basic(MOD_MASK_SHIFT, KC_0, KC_ASTR);
+const key_override_t KO_ONE         = ko_make_with_layers_and_negmods(MOD_MASK_SHIFT, KC_1, KC_PIPE, ~0, MOD_MASK_CTRL | MOD_MASK_ALT | MOD_MASK_GUI);
+const key_override_t KO_TWO         = ko_make_with_layers_and_negmods(MOD_MASK_SHIFT, KC_2, KC_EQUAL, ~0, MOD_MASK_CTRL | MOD_MASK_ALT | MOD_MASK_GUI);
+const key_override_t KO_THREE       = ko_make_with_layers_and_negmods(MOD_MASK_SHIFT, KC_3, KC_TILD, ~0, MOD_MASK_CTRL | MOD_MASK_ALT | MOD_MASK_GUI);
+const key_override_t KO_FOUR        = ko_make_with_layers_and_negmods(MOD_MASK_SHIFT, KC_4, KC_PLUS, ~0, MOD_MASK_CTRL | MOD_MASK_ALT | MOD_MASK_GUI);
+const key_override_t KO_FIVE        = ko_make_with_layers_and_negmods(MOD_MASK_SHIFT, KC_5, KC_LABK, ~0, MOD_MASK_CTRL | MOD_MASK_ALT | MOD_MASK_GUI);
+const key_override_t KO_SIX         = ko_make_with_layers_and_negmods(MOD_MASK_SHIFT, KC_6, KC_RABK, ~0, MOD_MASK_CTRL | MOD_MASK_ALT | MOD_MASK_GUI);
+const key_override_t KO_SEVEN       = ko_make_with_layers_and_negmods(MOD_MASK_SHIFT, KC_7, KC_CIRC, ~0, MOD_MASK_CTRL | MOD_MASK_ALT | MOD_MASK_GUI);
+const key_override_t KO_EIGHT       = ko_make_with_layers_and_negmods(MOD_MASK_SHIFT, KC_8, KC_AMPR, ~0, MOD_MASK_CTRL | MOD_MASK_ALT | MOD_MASK_GUI);
+const key_override_t KO_NINE        = ko_make_with_layers_and_negmods(MOD_MASK_SHIFT, KC_9, KC_PERC, ~0, MOD_MASK_CTRL | MOD_MASK_ALT | MOD_MASK_GUI);
+const key_override_t KO_ZERO        = ko_make_with_layers_and_negmods(MOD_MASK_SHIFT, KC_0, KC_ASTR, ~0, MOD_MASK_CTRL | MOD_MASK_ALT | MOD_MASK_GUI);
 const key_override_t KO_APOS        = ko_make_basic(MOD_MASK_SHIFT, KC_QUOTE, KC_LPRN);
 const key_override_t KO_COMMA       = ko_make_basic(MOD_MASK_SHIFT, KC_COMMA, KC_SCLN);
 const key_override_t KO_QUOTE       = ko_make_basic(MOD_MASK_SHIFT, KC_DQUO, KC_RPRN);
@@ -35,6 +45,12 @@ const key_override_t KO_UP          = ko_make_basic(MOD_MASK_SHIFT, KC_UP, KC_PA
 const key_override_t KO_DOWN        = ko_make_basic(MOD_MASK_SHIFT, KC_DOWN, KC_PAGE_DOWN);
 const key_override_t KO_LEFT        = ko_make_basic(MOD_MASK_SHIFT, KC_LEFT, KC_HOME);
 const key_override_t KO_RIGHT       = ko_make_basic(MOD_MASK_SHIFT, KC_RIGHT, KC_END);
+
+enum custom_keycodes {
+  CUSTOM_MOD = ML_SAFE_RANGE,
+  RGB_SLD,
+  ST_MACRO_0,
+};
 
 const key_override_t *key_overrides[] = {
   // Numbers
@@ -80,14 +96,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [1] = LAYOUT_voyager(
     KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          KC_NO,          KC_DELETE,          KC_NO,               KC_NO,              KC_NO,                KC_NO, 
-    KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          KC_NO,          KC_NO,              KC_NO,               KC_NO,              KC_NO,                KC_NO,          
+    KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          KC_NO,          KC_MEDIA_PREV_TRACK,KC_AUDIO_VOL_DOWN,   KC_AUDIO_VOL_UP,    KC_MEDIA_NEXT_TRACK,  KC_NO,          
     KC_NO,        KC_LEFT_CTRL,       KC_LEFT_ALT,        KC_LEFT_SHIFT,      KC_LEFT_GUI,        KC_NO,                                          KC_NO,          KC_LEFT,            KC_DOWN,             KC_UP,              KC_RIGHT,             KC_NO,  
-    KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          KC_ESC,         KC_HOME,            KC_PGDN,             KC_PAGE_UP,         KC_END,               KC_NO,          
+    KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          KC_NO,          KC_HOME,            KC_PGDN,             KC_PAGE_UP,         KC_END,               KC_NO,          
                                                                               KC_NO,              KC_NO,                                          KC_ENTER,       KC_BSPC
   ),
   [2] = LAYOUT_voyager(
     KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          KC_NO,          KC_NO,              KC_NO,               KC_NO,              KC_NO,                KC_NO, 
-    KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          LCTL(KC_Y),     LCTL(KC_V),         LCTL(KC_C),          LCTL(KC_X),         LCTL(KC_Z),           KC_NO,          
+    KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          LCTL(KC_Y),     KC_MEDIA_PREV_TRACK,KC_AUDIO_VOL_DOWN,   KC_AUDIO_VOL_UP,    KC_MEDIA_NEXT_TRACK,  KC_NO,          
     KC_NO,        KC_LEFT_CTRL,       KC_LEFT_ALT,        KC_LEFT_SHIFT,      KC_LEFT_GUI,        KC_NO,                                          LCTL(KC_F),     KC_MS_LEFT,         KC_MS_DOWN,          KC_MS_UP,           KC_MS_RIGHT,          KC_NO,          
     KC_NO,        KC_NO,              KC_NO,              KC_NO,              KC_NO,              KC_NO,                                          KC_NO,          KC_MS_WH_LEFT,      KC_MS_WH_DOWN,       KC_MS_WH_UP,        KC_MS_WH_RIGHT,       KC_NO,          
                                                                               KC_NO,              KC_NO,                                          KC_MS_BTN2,     KC_MS_BTN1
@@ -128,10 +144,34 @@ combo_t key_combos[COMBO_COUNT] = {
     COMBO(combo0, ST_MACRO_0),
 };
 
-
+bool custom_mod_active = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    // case CUSTOM_MOD:
+    //     if (record->event.pressed) {
+    //         custom_mod_active = true; // Activate custom modifier
+    //     } else {
+    //         custom_mod_active = false; // Deactivate custom modifier
+    //     }
+    //     return false; // Skip further processing of CUSTOM_MOD
+    // case KC_LEFT:
+    //     if (custom_mod_active) {
+    //         // Send alternate key when custom modifier is active
+    //         if (record->event.pressed) {
+    //             tap_code(KC_HOME); // Replace with desired alternate key
+    //         }
+    //         return false; // Skip normal KC_LEFT behavior
+    //     }
+    //     break;
+    // case KC_RIGHT:
+    //     if (custom_mod_active) {
+    //         if (record->event.pressed) {
+    //             tap_code(KC_END); // Alternate key for KC_RIGHT
+    //         }
+    //         return false; // Skip normal KC_RIGHT behavior
+    //     }
+    //     break;
     case ST_MACRO_0:
     if (record->event.pressed) {
       SEND_STRING(SS_TAP(X_LEFT_SHIFT) SS_DELAY(100) SS_TAP(X_LEFT_SHIFT));
